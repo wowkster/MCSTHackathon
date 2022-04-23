@@ -31,6 +31,7 @@ const messages: IMessage[] = [
 const About: NextPage = () => {
 	return (
 		<Layout>
+            <h1 className={styles.title}>About The Project</h1>
 			<div className={styles.messages}>
 				{messages.map((m, i) => (
 					<Message key={i} {...m} />

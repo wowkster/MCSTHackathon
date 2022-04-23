@@ -8,3 +8,8 @@
 	overflow: auto;
 	height: fit-content;
 }
+
+.title {
+    color: white;
+    font-weight: 900;
+}
