@@ -3,12 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { Configuration, OpenAIApi } from 'openai'
 
 type Data = {
-    response: any
+    response: string
+    dialogue: string
 } | {
     error: string
 }
-
-const dialogueMap = new Map()
 
 export default async function handler(
     req: NextApiRequest,
@@ -18,13 +17,13 @@ export default async function handler(
         error: 'Method Not Allowed'
     })
 
-    const { message, clientId } = req.body
+    let { message, clientDialogue } = req.body
 
-    if (!message || !clientId) res.status(400).json({
+    if (!message) res.status(400).json({
         error: 'Missing Required Fields'
     })
 
-    let dialogue = dialogueMap.has(clientId) ? dialogueMap.get(clientId) : "The following is a conversation between a mental health chatbot named Olive and a student named User"
+    let dialogue: string = clientDialogue ?? "The following is a conversation between a mental health chatbot named Olive and a student named User"
 
     const configuration = new Configuration({
         organization: "org-Q2nk90JMs4eksK0xZNOpvtfP",
@@ -44,9 +43,5 @@ export default async function handler(
     const output = completion.data!.choices![0]!.text!
     dialogue += output
 
-    dialogueMap.set(clientId, dialogue)
-
-    console.log(dialogueMap)
-
-    res.status(200).json({ response: output })
+    res.status(200).json({ response: output, dialogue })
 }

@@ -11,7 +11,7 @@ import cuid from "cuid";
 
 const DEFAULT_TEXT = `Hi! I'm Olive, your mental health assistant. Type your messages below, and I'll try to help.`;
 
-const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
+const Home: NextPage = () => {
 	const [messages, setMessages] = useState<IMessage[]>([
 		{
 			textContent: DEFAULT_TEXT,
@@ -22,10 +22,8 @@ const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
 	const [textContent, setTextContent] = useState("");
 	const [loading, setLoading] = useState(false);
 	const messagesBox = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		speakMessage(DEFAULT_TEXT);
-	}, []);
+	const textInput = useRef<HTMLInputElement>(null);
+	const [dialogue, setDialogue] = useState("");
 
 	const scrollToBottom = () => {
 		setTimeout(() => {
@@ -35,19 +33,6 @@ const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
 				behavior: "smooth",
 			});
 		}, 100);
-	};
-
-	const speakMessage = (text: string) => {
-		// // new SpeechSynthesisUtterance object
-		// let utter = new SpeechSynthesisUtterance();
-		// utter.lang = "en-GB";
-		// utter.text = text;
-		// utter.volume = 1;
-		// utter.rate = 1.25;
-		// utter.pitch = 1;
-		// utter.voice = window.speechSynthesis.getVoices()[8];
-		// // speak
-		// window.speechSynthesis.speak(utter);
 	};
 
 	const handleSubmit = () => {
@@ -63,28 +48,34 @@ const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
 
 		setLoading(true);
 		setTextContent("");
+		textInput.current?.focus();
+		setTimeout(() => {
+			textInput.current?.focus();
+		}, 100);
 	};
 
 	const handleRequest = async (text: string) => {
 		// Request a response from the backend api
 		const res = await axios.post("/api/prompt", {
 			message: text,
-			clientId: clientId,
+			clientDialogue: dialogue,
 		});
+
+		const { response, dialogue: newDialogue } = res.data;
 
 		setLoading(false);
 		setMessages([
 			...messages,
 			{
-				textContent: res.data.response,
+				textContent: response,
 				timestamp: Date.now(),
 				type: MessageType.BOT,
 			},
 		]);
-
-		speakMessage(res.data.response);
+		setDialogue(newDialogue);
 
 		scrollToBottom();
+		textInput.current?.focus();
 	};
 
 	return (
@@ -105,15 +96,14 @@ const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
 					autoFocus
 					value={textContent}
 					onChange={(e) => setTextContent(e.target.value)}
-                    onKeyDown={(e) => {
-                        console.log(e)
-                        if (e.code === 'Enter') {
-                            e.preventDefault();
-                            handleSubmit();
-                          }
-
+					onKeyDown={(e) => {
+						if (e.key === "Enter") {
+							e.preventDefault();
+							handleSubmit();
+						}
 					}}
 					disabled={loading}
+					ref={textInput}
 				></input>
 				<div
 					className={combine(
@@ -133,11 +123,3 @@ const Home: NextPage<{ clientId: string }> = ({ clientId }) => {
 };
 
 export default Home;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	return {
-		props: {
-			clientId: cuid(),
-		},
-	};
-};
