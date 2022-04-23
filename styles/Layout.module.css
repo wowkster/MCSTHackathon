@@ -1,0 +1,51 @@
+.container {
+	position: relative;
+	min-height: 100vh;
+	background: linear-gradient(120.64deg, #7ea1e3 19.22%, #f653b5 151.11%);
+	/* background-color: #7ea1e3; */
+}
+
+.contentWrap {
+	padding-bottom: 4rem;
+}
+
+.nav {
+	padding: 2rem;
+	color: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: start;
+	gap: 2rem;
+}
+
+.logo {
+	cursor: pointer;
+}
+
+.navLinks {
+	cursor: pointer;
+	display: flex;
+	gap: 1rem;
+}
+
+.main {
+	width: max(60%, 16rem);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 4rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+}
+

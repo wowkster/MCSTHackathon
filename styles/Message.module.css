@@ -1,0 +1,39 @@
+.message {
+	background-color: hsl(214, 50%, 92%);
+    width: fit-content;
+    max-width: 36rem;
+    overflow-wrap: break-word;
+    padding: .75rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+	color: black;
+    margin: 0;
+}
+
+.timestamp {
+	color: #888;
+    align-self: flex-end;
+    margin: 0;
+}
+
+.user {
+    align-self: flex-end;
+    background-color: hsl(259, 50%, 88%);
+}
+
+.link {
+    color: hsl(214, 80%, 60%);
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.user .link {
+    color: hsl(259, 80%, 60%);
+}

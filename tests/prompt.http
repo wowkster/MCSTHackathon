@@ -1,0 +1,8 @@
+GET /api/prompt
+Host: localhost:3000
+Content-Type: application/json
+Accept: application/json
+
+{
+    "message": "im depressed"
+}
