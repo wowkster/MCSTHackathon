@@ -4,4 +4,4 @@ Mindful Health is an AI chat bot built with OpenAI's GPT-3 machine learning mode
 
 ## Try it out
 
-This project is deployed on vercel at [https://mcst-hackathon-km8wwak2x-wowkster.vercel.app/](https://mcst-hackathon-km8wwak2x-wowkster.vercel.app/)
+This project is deployed on vercel at [https://mcst-hackathon.vercel.app/](https://mcst-hackathon.vercel.app/)
