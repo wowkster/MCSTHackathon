@@ -10,6 +10,7 @@ export interface IMessage {
 	textContent: string;
 	timestamp?: number;
 	type: MessageType;
+    warning?: boolean
 }
 
 export enum MessageType {
@@ -17,13 +18,13 @@ export enum MessageType {
 	BOT,
 }
 
-const Message: FC<IMessage> = ({ textContent, timestamp, type }) => {
+const Message: FC<IMessage> = ({ textContent, timestamp, type, warning }) => {
     const urls = extractUrls(textContent, true)
 
     const tokens = !!urls && !!urls.length ? new Scanner(textContent, true , urls).scan(): [textContent];
 
 	return (
-		<div className={combine(styles.message, type === MessageType.USER && styles.user)}>
+		<div className={combine(styles.message, type === MessageType.USER && styles.user, warning && styles.warning)}>
 			<p className={styles.text}>{tokens.map(t => {
                 return !!urls && !!urls.length && urls.includes(t) ? <Link  href={t}><a className={styles.link} target={'_blank'}>{t}</a></Link> : t
             })}</p>

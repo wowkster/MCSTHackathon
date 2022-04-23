@@ -37,3 +37,11 @@
 .user .link {
     color: hsl(259, 80%, 60%);
 }
+
+.warning {
+    background-color: hsl(48, 51%, 88%);
+}
+
+.warning .link {
+    color: hsl(48, 80%, 40%);
+}

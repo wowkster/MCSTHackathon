@@ -61,7 +61,7 @@ const Home: NextPage = () => {
 			clientDialogue: dialogue,
 		});
 
-		const { response, dialogue: newDialogue } = res.data;
+		const { response, dialogue: newDialogue, warning } = res.data;
 
 		setLoading(false);
 		setMessages([
@@ -70,6 +70,7 @@ const Home: NextPage = () => {
 				textContent: response,
 				timestamp: Date.now(),
 				type: MessageType.BOT,
+                warning
 			},
 		]);
 		setDialogue(newDialogue);

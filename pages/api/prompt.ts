@@ -5,9 +5,12 @@ import { Configuration, OpenAIApi } from 'openai'
 type Data = {
     response: string
     dialogue: string
+    warning?: boolean
 } | {
     error: string
 }
+
+const FLAG_KEY_WORDS = ['suicide', 'suicidal', 'end it all', 'it is over', 'crisis', 'kill myself', 'kms']
 
 export default async function handler(
     req: NextApiRequest,
@@ -24,6 +27,10 @@ export default async function handler(
     })
 
     let dialogue: string = clientDialogue ?? "The following is a conversation between a mental health chatbot named Olive and a student named User"
+
+    if (FLAG_KEY_WORDS.some(w => message.includes(w))) {
+        return res.status(200).json({ response: `I understand what you are going through, and I want to help you as much as I can to help you get through this time of hardship and uncertainty. If you or someone else is in danger, please call 800-273-8255 or visit https://suicidepreventionlifeline.org/`, dialogue, warning: true })
+    }
 
     const configuration = new Configuration({
         organization: "org-Q2nk90JMs4eksK0xZNOpvtfP",
