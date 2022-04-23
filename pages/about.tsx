@@ -5,7 +5,7 @@ import Message, { IMessage, MessageType } from "../components/Message";
 
 const messages: IMessage[] = [
 	{
-		textContent: `Mentalhealth.io is a chatbot aimed to help those in need of help for
+		textContent: `Mindfulhealth.io is a chatbot aimed to help those in need of help for
     any issue they may have. The chatbot is built using the OpenAI GPT-3 API and
     full stack to provide a helpful and accurate interactive user
     experience. This bot is trained throughout the entire internet as its knowledge base.`,

@@ -6,5 +6,5 @@
 	gap: 1rem;
 	padding: 1rem;
 	overflow: auto;
-	height: 60vh;
+	height: fit-content;
 }
