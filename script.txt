@@ -1,28 +1,21 @@
-Hi! I'm Olive, your mental health assistant. Type your messages below, and I'll try to help.
 
 Hi
 
-Hi! How are you today?
 
 I am not feeling too good today
 
-I'm sorry to hear that. Is there anything I can do to help?
 
 Yeah, can we talk
 
-Of course. What would you like to talk about?
 
 I just have a lot of work
 
-I completely understand. It can be really tough to stay on top of everything. Do you have any tips on how you manage to stay organized and on top of your work?
 
 No, do you?
 
 
-Well, I like to make sure that I have a clear plan for what needs to be done each day. I also try to break down my work into smaller tasks so that I don't feel overwhelmed.
 
 
 Thank you, do you have any sites to help with mental health
 
 
-Here are a few: https://www.mentalhealth.gov/ https://www.nimh.nih.gov/ https://www.samhsa.gov/
