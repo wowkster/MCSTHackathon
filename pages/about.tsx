@@ -6,16 +6,17 @@ import Message, { IMessage, MessageType } from "../components/Message";
 const messages: IMessage[] = [
 	{
 		textContent: `Mentalhealth.io is a chatbot aimed to help those in need of help for
-    any issue they may have. The chatbot is built using the OpenAI API and
+    any issue they may have. The chatbot is built using the OpenAI GPT-3 API and
     full stack to provide a helpful and accurate interactive user
-    experience.`,
+    experience. This bot is trained throughout the entire internet as its knowledge base.`,
 		type: MessageType.BOT,
 	},
 	{
 		textContent: `We are three high school juniors who are passionate about problem
-    solving and programming. We set out to create a resource for people
-    suffering from mental health issues, as it has become such a prominent
-    problem in today's society.`,
+    solving and programming. We saw a problem in our schools access to mental health resources. When we opened our mental health resource catalog, all we were greeted
+	with was links to domains with more links. Did you know it takes a person less than a second to
+	form an opinion on a site. Being confronted with this list of links is not something that a student who is struggling with 
+	their own mental health 	 `,
 		type: MessageType.USER,
 	},
 ];
