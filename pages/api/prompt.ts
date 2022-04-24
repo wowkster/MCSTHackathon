@@ -27,6 +27,10 @@ export default async function handler(
     })
 
     let dialogue: string = clientDialogue ?? "The following is a conversation between a mental health chatbot named Olive and a student named User"
+    
+    /* DISABLE PROJECT */
+    /* ! Remove this to use the code for yourself ! */
+    return res.status(200).json({ response: `This project has been disabled so that it doesn't rack up bills on OpenAI. To view the code, visit https://github.com/wowkster/MCSTHackathon`, dialogue })
 
     if (FLAG_KEY_WORDS.some(w => message.includes(w))) {
         return res.status(200).json({ response: `I understand what you are going through, and I want to help you as much as I can to help you get through this time of hardship and uncertainty. If you or someone else is in danger, please call 800-273-8255 or visit https://suicidepreventionlifeline.org/`, dialogue, warning: true })

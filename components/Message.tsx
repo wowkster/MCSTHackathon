@@ -19,7 +19,7 @@ export enum MessageType {
 }
 
 const Message: FC<IMessage> = ({ textContent, timestamp, type, warning }) => {
-    const urls = extractUrls(textContent, true)
+    const urls = extractUrls(textContent)
 
     const tokens = !!urls && !!urls.length ? new Scanner(textContent, true , urls).scan(): [textContent];
 
